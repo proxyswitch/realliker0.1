@@ -12,6 +12,7 @@ $msgs='<table class="table">
 <th>Begin</th>
 <th>Start/Current/Remain</th>
 <th>Status</th>
+<th>Action</th>
 </tr></thead><tbody>';
 foreach($res[0] as $row){
 $orderid=$row['id'];
@@ -29,8 +30,8 @@ $finishtime="";
 if($row['status']=="Completed" || $row['status']=="Refunded"){
 $finishtime=date("d-m-y h:i:s a",strtotime($row['ftime']));	
 }
-$status=$row['status'];	
-$cancellink="";
+$status=$row['status'];
+$actionButtons="";
 if($row['finishcount']==0){	
 $requiredcount=$row['count']+$row['startcount'];
 $leftcount=$requiredcount-$row['startcount'];
@@ -44,6 +45,12 @@ $autoo="";
 $autoo="<br>Auto-".$row['autoorderid'];
 }
 
+if($status!="Canceled" && $status!="Refunded" && $status!="Completed"){
+ $actionButtons='<button class="orderCancelBtn btn btn-xs btn-danger" data-id="'.$orderid.'">Cancel</button>';
+}else if($status=="Completed"){
+ $actionButtons='<button class="orderRefillBtn btn btn-xs btn-info" data-id="'.$orderid.'">Refill</button>';
+}
+
 
 $stcurcom=$row['startcount']."/&nbsp;".$row['finishcount']."/&nbsp;".$leftcount;
 $msgs.='<tr>
@@ -54,7 +61,7 @@ $msgs.='<tr>
 <span style="word-break: break-all;">'.$url.'<br>&'.$row['extdata'].''.$row['icomments'].'</span></td>
 <td>'.$starttime.'</td>
 <td>'. $stcurcom.'</td>
-<td><label class="label rs'.$status.'">'.$status.'</label>&nbsp;<br>'.$errortext.'</td> 
+<td><label class="label rs'.$status.'">'.$status.'</label>&nbsp;<br>'.$errortext.'</td><td>'.$actionButtons.'</td>
 </tr>';
 }
 $msgs.='</tbody></table>';
