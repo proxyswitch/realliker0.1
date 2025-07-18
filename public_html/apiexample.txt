@@ -1,0 +1,106 @@
+<?php
+$apiurl='http://www.api.smmexchange.com/api/index.php?request=';
+$email="[YOUR_EMAIL]";    // Secure Email
+$scode="[YOUR_SECURE_CODE]";   //Secure Code
+$key='[YOUR_KEY]';  // Key
+$secureapi = array();
+
+$secureapi['email']=trim($email);
+
+$secureapi['scode']=trim($scode);
+
+$secureapi['key']=trim($key);
+
+$secureapi['perform']='neworder';
+
+$secureapi['orders'][]=
+
+array(
+
+'service' =>"Facebook", // Service Name
+
+'type' =>str_replace(" ","%20","Facebook Page Likes"),  // Service Type
+
+'count' =>"[QUANTITY]",     // Count
+
+'data' =>"[LINK]",  // Link
+
+);
+
+$response = json_decode(file_get_contents($apiurl.json_encode($secureapi)),true);
+
+print_r($response);
+
+/*
+Final URL: 
+http://www.api.smmexchange.com/api/index.php?request={"email":"[YOUR_EMAIL]","scode":"[YOUR_SECURE_CODE]","key":"[YOUR_KEY]","perform":"neworder","orders":[{"service":"Facebook","type":"Facebook%20Page%20Likes","count":"[QUANTITY]","data":"[LINK]"}]}
+
+{"Code":"100","Message":"Added","Order No":"1","Url":"TESTING","Start Count":0,"Current Count":0,"Status":"Pending"}
+
+*/
+
+?>
+
+========================================
+
+
+
+
+
+How To Get Order Status:
+
+<?php 
+$apiurl='http://www.api.smmexchange.com/api/index.php?request=';
+$email="[YOUR_EMAIL]";   // Secure Email
+$scode="[YOUR_SECURE_CODE]";   //Secure Code
+$key='[YOUR_KEY]';  // Key
+$orderno=[ORDER_NUMBER];  // Order Number
+
+
+$secureapi = array();
+
+
+$secureapi['email']=trim($email);
+
+
+$secureapi['scode']=trim($scode);
+
+
+$secureapi['key']=trim($key);
+
+
+$secureapi['perform']=trim('orderdetails');
+
+
+$secureapi['orderno']=trim($orderno);
+
+
+$response = json_decode(file_get_contents($apiurl.json_encode($secureapi)),true);
+
+
+print_r($response);
+
+/*
+
+To get the order status from the API you have to send a GET request to the API with your API key & the order number of the order.
+
+Example URL: http://www.api.smmexchange.com/api/index.php?request={"email":"[YOUR_EMAIL]","scode":"[YOUR_SECURE_CODE]","key":"[YOUR_KEY]","perform":"orderdetails","orderno":[ORDER_NUMBER]}
+
+Note: You'll get the order status in JSON format.
+
+
+{"Code":"106","Message":"Order Found","Order No":"1","Url":"Testing","Start Count":"0","Current Count":"0","Status":"Refunded"}
+
+
+Status Code
+
+{"Code":"999","Message":"Auth Failed"}
+
+{"Code":"100","Message":"Added,"Status":"Pending"}
+
+{"Code":"105","Message":"Order Not Found"}
+
+{"Code":"106","Message":"Order Fond","Status":"Refunded"}
+
+*/
+?>

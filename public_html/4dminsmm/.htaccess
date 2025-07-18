@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "ONLY FOR ADMINS"
+AuthType Basic
+AuthUserFile /home/smmxu/htpasswd/htpasswd-acf4113fb8007d4209a655cf91f61507
+Require valid-user
