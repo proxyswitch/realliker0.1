@@ -78,6 +78,7 @@ $(".date").datepicker();
 <li class=""><a href="smme-admin-profile.php">Profile</a></li>
 <li class=""><a href="smme-users-api.php">Users Api</a></li>
 <li class=""><a href="smme-admin-setting.php">Site Setting</a></li>
+<li class=""><a href="smme-api-fetcher.php">Api Fetcher</a></li>
 <li class=""><a href="smme-logout.php">Logout</a>
 </ul>
 </li>
