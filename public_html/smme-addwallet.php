@@ -17,6 +17,8 @@ $sitecontent=$commonobj->sitecontent("addbalance");
 <?php if($userprofile['2co']==1){?>
 <option value="2checkout">Payeer + Btc</option>
 <?php }?>
+<option value="payeer">Payeer</option>
+<option value="paytm">Paytm</option>
 </select>
 </div>
 
@@ -28,6 +30,8 @@ $sitecontent=$commonobj->sitecontent("addbalance");
 <input type='hidden' name='csrfToken' value='<?=$_SESSION['csrfTOken'];?>' />
 <input type="hidden" name="minamt" id="minamt" value="<?=$admin['minimum_pay'];?>" disabled="disabled" />
 <input type="hidden" name="minamt1" id="minamt1" value="<?=$admin['2minimum_pay'];?>" disabled="disabled" />
+<input type="hidden" name="minamt2" id="minamt2" value="<?=$admin['2minimum_pay'];?>" disabled="disabled" />
+<input type="hidden" name="minamt3" id="minamt3" value="<?=$admin['2minimum_pay'];?>" disabled="disabled" />
 <div class="text-center"><input type="submit" name="addbalancebtn" value="Submit" class="btn btn-default">
 <input type="reset" name="clear" value="Clear" class="btn btn-default"></div>
 </form>
@@ -75,5 +79,11 @@ $sitecontent=$commonobj->sitecontent("addbalance");
 <input class="amount"  type="text" name="amount" value="">
 </form>
 <?php } ?>
+<form action="payeer/process.php" method="post" id="payeerprocess" class="payeerform" style="display:none;">
+<input class="amount" type="text" name="amount" value="">
+</form>
+<form action="paytm/process.php" method="post" id="paytmprocess" class="paytmform" style="display:none;">
+<input class="amount" type="text" name="amount" value="">
+</form>
 </div>
 <?php include("includes/smme-footer.php");?>
