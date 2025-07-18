@@ -267,12 +267,30 @@ else if($(".addbalance .payvia").val()=="2checkout"){
 $min=$("#minamt1").val();
 if(Number($amount)<=$min){
 $amount=$min;
-$(".addbalance #amount").val($min);	
+$(".addbalance #amount").val($min);
 }
 $(".2coform .amount").val($amount);
 $(".2coform").submit();
 }
-}	
+else if($(".addbalance .payvia").val()=="payeer"){
+$min=$("#minamt2").val();
+if(Number($amount)<=$min){
+$amount=$min;
+$(".addbalance #amount").val($min);
+}
+$(".payeerform .amount").val($amount);
+$(".payeerform").submit();
+}
+else if($(".addbalance .payvia").val()=="paytm"){
+$min=$("#minamt3").val();
+if(Number($amount)<=$min){
+$amount=$min;
+$(".addbalance #amount").val($min);
+}
+$(".paytmform .amount").val($amount);
+$(".paytmform").submit();
+}
+}
 });
 
 $(document).on("submit",".profileupdate",function(e){
