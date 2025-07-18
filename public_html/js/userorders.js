@@ -45,5 +45,19 @@ $search[2]=$link;
 if($search){
 getrecords($search,1);
 }
-});	
+});
+
+$(document).on("click",".orderCancelBtn",function(){
+ var id=$(this).data('id');
+ $.post("request/orderactions.php",{action:"cancel",order_id:id},function(){
+  getrecords("",1);
+ });
+});
+
+$(document).on("click",".orderRefillBtn",function(){
+ var id=$(this).data('id');
+ $.post("request/orderactions.php",{action:"refill",order_id:id},function(){
+  getrecords("",1);
+ });
+});
 });
