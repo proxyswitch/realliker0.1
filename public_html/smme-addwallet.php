@@ -2,6 +2,7 @@
 include("class/commonsetting.class.php");
 $commonobj=new common();
 $sitecontent=$commonobj->sitecontent("addbalance");
+$paymentConfig = include(dirname(__FILE__)."/config/payment_methods.php");
 ?>
 <div class="container content">
 <div class="col-md-6 col-md-offset-3">
@@ -13,12 +14,18 @@ $sitecontent=$commonobj->sitecontent("addbalance");
 <label>Payment Option</label>
 <select name="payvia" class="form-control payvia required">
 <option value="">Select</option>
+<?php if(!empty($paymentConfig['paypal'])): ?>
 <option value="paypal">Paypal</option>
-<?php if($userprofile['2co']==1){?>
+<?php endif; ?>
+<?php if($userprofile['2co']==1 && !empty($paymentConfig['2checkout'])): ?>
 <option value="2checkout">Payeer + Btc</option>
-<?php }?>
+<?php endif; ?>
+<?php if(!empty($paymentConfig['payeer'])): ?>
 <option value="payeer">Payeer</option>
+<?php endif; ?>
+<?php if(!empty($paymentConfig['paytm'])): ?>
 <option value="paytm">Paytm</option>
+<?php endif; ?>
 </select>
 </div>
 
