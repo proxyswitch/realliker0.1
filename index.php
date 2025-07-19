@@ -250,7 +250,7 @@ $currencies = $conn->prepare("SELECT * FROM currency");
 $currencies->execute();
 $currencies  = $currencies->fetchAll();
 
- $ref_payouts  = $conn->prepare("SELECT * FROM referral WHERE r_p_code=:r_p_code ");
+ $ref_payouts  = $conn->prepare("SELECT * FROM referral_payouts WHERE r_p_code=:r_p_code ORDER BY r_p_id DESC");
  $ref_payouts->execute(array("r_p_code" => $user['ref_code']));
  $ref_payouts  = $ref_payouts->fetchAll();
 
