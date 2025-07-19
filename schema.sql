@@ -196,3 +196,28 @@ CREATE TABLE notifications_popup (
     allPages TEXT,
     status TINYINT DEFAULT 1
 );
+
+-- Table storing referral statistics for the affiliate system
+CREATE TABLE referral (
+    referral_id INT AUTO_INCREMENT PRIMARY KEY,
+    referral_code VARCHAR(64) UNIQUE,
+    referral_client_id INT,
+    referral_clicks INT DEFAULT 0,
+    referral_sign_up INT DEFAULT 0,
+    referral_status INT DEFAULT 1,
+    referral_totalFunds_byReffered DECIMAL(20,8) DEFAULT 0,
+    referral_total_commision DECIMAL(20,8) DEFAULT 0,
+    referral_earned_commision DECIMAL(20,8) DEFAULT 0,
+    referral_requested_commision DECIMAL(20,8) DEFAULT 0,
+    referral_rejected_commision DECIMAL(20,8) DEFAULT 0
+);
+
+-- Records of payout requests made for referral commissions
+CREATE TABLE referral_payouts (
+    r_p_id INT AUTO_INCREMENT PRIMARY KEY,
+    r_p_code VARCHAR(64),
+    r_p_amount_requested DECIMAL(20,8) DEFAULT 0,
+    r_p_status INT DEFAULT 0,
+    r_p_requested_at DATETIME,
+    r_p_updated_at DATETIME
+);
