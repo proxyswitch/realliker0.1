@@ -158,3 +158,28 @@ INSERT INTO languages (language_name, language_code, language_type, default_lang
 ('Deutsch', 'de', 2, 0),
 ('Portuguese Brazil', 'pt-BR', 2, 0),
 ('Türkçe', 'tr', 2, 0);
+
+-- Static pages used by the public site
+CREATE TABLE pages (
+    page_id INT AUTO_INCREMENT PRIMARY KEY,
+    page_name VARCHAR(255) NOT NULL,
+    page_get VARCHAR(255) UNIQUE,
+    page_content TEXT,
+    seo_title VARCHAR(255),
+    seo_keywords VARCHAR(255),
+    seo_description TEXT,
+    page_status TINYINT DEFAULT 1,
+    last_modified DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Blog posts displayed on the site
+CREATE TABLE blogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    blog_get VARCHAR(255) UNIQUE,
+    title VARCHAR(255),
+    content TEXT,
+    image_file VARCHAR(255),
+    status TINYINT DEFAULT 1,
+    published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
