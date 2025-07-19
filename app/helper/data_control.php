@@ -224,7 +224,7 @@ function countRow($data){
         }
         $where    = substr($where,0,-3);
     else:
-        $execute[]= "";
+        $execute = [];
     endif;
     $row  = $conn->prepare("SELECT * FROM {$data['table']} $where ");
     $row-> execute($execute);
@@ -238,7 +238,7 @@ function getRows($data){
     $order    = "";
     $order    = "";
     $limit    = "";
-    $execute[]= "";
+    $execute = [];
     if( $data["where"] ):
         $where    = "WHERE ";
         foreach ($data["where"] as $key => $value) {
