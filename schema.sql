@@ -103,6 +103,19 @@ CREATE TABLE settings (
 
 INSERT INTO settings (id, site_theme) VALUES (1, '0C8t2cUp9wzh2tWfUWiDhRzHlRjKBeyWA7rG');
 
+-- Theme definitions
+CREATE TABLE themes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    theme_name VARCHAR(255),
+    theme_dirname VARCHAR(255) UNIQUE,
+    theme_extras TEXT,
+    newpage TEXT,
+    last_modified DATETIME
+);
+
+INSERT INTO themes (theme_name, theme_dirname, theme_extras, newpage, last_modified) VALUES
+('Default Theme', '0C8t2cUp9wzh2tWfUWiDhRzHlRjKBeyWA7rG', '{"stylesheets": ["bootstrap.css", "style.css"]}', '', '0000-00-00 00:00:00');
+
 -- Miscellaneous options used by the panel
 CREATE TABLE General_options (
     id INT AUTO_INCREMENT PRIMARY KEY,
