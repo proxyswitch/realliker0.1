@@ -86,7 +86,14 @@ $panel = $panel->fetch(PDO::FETCH_ASSOC);
 
 define('THEME', $settings["site_theme"]);
 
-$loader   = new Twig_Loader_Filesystem(__DIR__.'/views/'.THEME);
+// Resolve the path for the active theme and fall back to the default
+$themePath = __DIR__.'/views/'.THEME;
+if (!is_dir($themePath)) {
+  // Default theme shipped with the project
+  $themePath = __DIR__.'/views/0C8t2cUp9wzh2tWfUWiDhRzHlRjKBeyWA7rG';
+}
+
+$loader   = new Twig_Loader_Filesystem($themePath);
 $twig     = new Twig_Environment($loader, ['autoescape' => false]);
 
 $user = $conn->prepare("SELECT * FROM clients WHERE client_id=:id");
