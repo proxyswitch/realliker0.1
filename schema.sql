@@ -232,3 +232,20 @@ CREATE TABLE referral_payouts (
     r_p_requested_at DATETIME,
     r_p_updated_at DATETIME
 );
+
+-- Table to store rented child reseller panels
+CREATE TABLE childpanels (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id INT NOT NULL,
+    domain VARCHAR(255) NOT NULL,
+    currency VARCHAR(32),
+    child_username VARCHAR(255),
+    child_password VARCHAR(255),
+    charge DECIMAL(20,8) DEFAULT 0,
+    renewal_date DATE,
+    date_created DATETIME,
+    dreampanel_id INT,
+    keyc VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'active',
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
