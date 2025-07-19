@@ -193,17 +193,18 @@ $blogtitle  = $blog["title"];
 
 
    
- $popupNotif = array();
- if(!$_SESSION["popSeen"]){
-   $sth = $conn->prepare("SELECT * FROM notifications_popup WHERE expiry_date >= DATE(now()) AND status=:status ORDER BY id DESC");
-   $sth->execute(array("status"=>1));
-   $popupNotif = $sth->fetchAll();
-   $link = $_SERVER['REQUEST_URI'];
-   $link_array = explode('/',$link);
-   $page = end($link_array);
-   $i = 0;
-   
-   foreach($popupNotif as $val){
+  $popupNotif = array();
+  if(!$_SESSION["popSeen"]){
+    $sth = $conn->prepare("SELECT * FROM notifications_popup WHERE expiry_date >= DATE(now()) AND status=:status ORDER BY id DESC");
+    $sth->execute(array("status"=>1));
+    $popupNotif = $sth->fetchAll();
+    $link = $_SERVER['REQUEST_URI'];
+    $link_array = explode('/',$link);
+    $page = end($link_array);
+    $i = 0;
+    $comma_string = [];
+
+    foreach($popupNotif as $val){
        
        if( in_array($val['id'] ,explode(",",$_SESSION["seen_popup"])) ){
             unset($popupNotif[$i]);
