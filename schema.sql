@@ -172,6 +172,17 @@ CREATE TABLE pages (
     last_modified DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Navigation menus displayed on the site
+CREATE TABLE menus (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    slug VARCHAR(255),
+    active VARCHAR(255),
+    menu_line INT DEFAULT 0,
+    visible VARCHAR(50),
+    icon VARCHAR(255)
+);
+
 -- Blog posts displayed on the site
 CREATE TABLE blogs (
     id INT AUTO_INCREMENT PRIMARY KEY,
