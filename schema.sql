@@ -143,3 +143,18 @@ CREATE TABLE currency (
 );
 
 INSERT INTO currency (id, code, symbol, value, dolar_charge) VALUES (1, 'USD', '$', 1.0, 1.0);
+
+-- Supported interface languages
+CREATE TABLE languages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    language_name VARCHAR(255),
+    language_code VARCHAR(50) UNIQUE,
+    language_type TINYINT DEFAULT 2,
+    default_language TINYINT DEFAULT 0
+);
+
+INSERT INTO languages (language_name, language_code, language_type, default_language) VALUES
+('English', 'en', 2, 1),
+('Deutsch', 'de', 2, 0),
+('Portuguese Brazil', 'pt-BR', 2, 0),
+('Türkçe', 'tr', 2, 0);
