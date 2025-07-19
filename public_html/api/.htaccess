@@ -1,4 +1,0 @@
-Options +MultiViews
-RewriteEngine on
-RewriteRule ^(.*)\.html$ $1.php [L]
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
