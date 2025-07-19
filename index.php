@@ -242,8 +242,8 @@ $blogs  = $conn->prepare("SELECT * FROM blogs WHERE status=:status ");
  $blogs->execute(array("status" => 1 ));
  $blogs  = $blogs->fetchAll();
   
-$panel_info = $conn->prepare("SELECT * FROM panel_info WHERE id=:id ");
- $panel_info->execute(array("id" => 1));
+$panel_info = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:panel_id ");
+$panel_info->execute(array("panel_id" => 1));
  $panel_info  = $panel_info->fetchAll();
 
 $currencies = $conn->prepare("SELECT * FROM currency WHERE status=:status ");
@@ -363,8 +363,8 @@ endif;
  $ref_payouts->execute(array("r_p_code" => $user['ref_code']));
  $ref_payouts  = $ref_payouts->fetchAll();
 
-$panel_info = $conn->prepare("SELECT * FROM panel_info WHERE id=:id ");
- $panel_info->execute(array("id" => 1));
+$panel_info = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:panel_id ");
+$panel_info->execute(array("panel_id" => 1));
  $panel_info  = $panel_info->fetchAll();
 
  $panels = $conn->prepare("SELECT * FROM panels INNER JOIN clients ON clients.client_id=panels.client_id WHERE panels.client_id=:client_id ORDER BY panels.panel_id DESC");
