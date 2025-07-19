@@ -246,9 +246,9 @@ $panel_info = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:panel_id 
 $panel_info->execute(array("panel_id" => 1));
  $panel_info  = $panel_info->fetchAll();
 
-$currencies = $conn->prepare("SELECT * FROM currency WHERE status=:status ");
- $currencies->execute(array("status" => 1));
- $currencies  = $currencies->fetchAll();
+$currencies = $conn->prepare("SELECT * FROM currency");
+$currencies->execute();
+$currencies  = $currencies->fetchAll();
 
  $ref_payouts  = $conn->prepare("SELECT * FROM referral WHERE r_p_code=:r_p_code ");
  $ref_payouts->execute(array("r_p_code" => $user['ref_code']));
@@ -372,9 +372,9 @@ $panel_info->execute(array("panel_id" => 1));
  $panels = $panels->fetchAll();
 
 
-$currencies = $conn->prepare("SELECT * FROM currency WHERE status=:status ");
- $currencies->execute(array("status" => 1));
- $currencies  = $currencies->fetchAll();
+$currencies = $conn->prepare("SELECT * FROM currency");
+$currencies->execute();
+$currencies  = $currencies->fetchAll();
 
 
 if( $user["auth"]) :
