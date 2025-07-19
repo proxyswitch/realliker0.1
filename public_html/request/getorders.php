@@ -45,10 +45,10 @@ $autoo="";
 $autoo="<br>Auto-".$row['autoorderid'];
 }
 
-if($status!="Canceled" && $status!="Refunded" && $status!="Completed"){
- $actionButtons='<button class="orderCancelBtn btn btn-xs btn-danger" data-id="'.$orderid.'">Cancel</button>';
-}else if($status=="Completed"){
+if($status=="Completed"){
  $actionButtons='<button class="orderRefillBtn btn btn-xs btn-info" data-id="'.$orderid.'">Refill</button>';
+}else{
+ $actionButtons="";
 }
 
 
