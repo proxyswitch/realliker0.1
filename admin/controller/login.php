@@ -39,13 +39,6 @@ if($_SESSION["username"]) :
     $admin    = $conn->prepare("SELECT * FROM admins WHERE username=:username && password=:password ");
     $admin  -> execute(array("username"=>$username,"password"=>$pass ));
     $j = $_SERVER['HTTP_HOST'];
-
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-$resp = curl_exec($curl);
-curl_close($curl);
     $admin    = $admin->fetch(PDO::FETCH_ASSOC);
     $access = json_decode($admin["access"],true);
  $_SESSION["otp_login"] = true;
