@@ -271,7 +271,7 @@ $menus  = $conn->prepare("SELECT * FROM menus WHERE visible=:visible ORDER BY me
 $menuslug = $menus["slug"];
 endif;
 
- $panels = $conn->prepare("SELECT * FROM panels INNER JOIN clients ON clients.client_id=panels.client_id WHERE panels.client_id=:client_id ORDER BY panels.panel_id DESC");
+ $panels = $conn->prepare("SELECT * FROM childpanels INNER JOIN clients ON clients.client_id=childpanels.client_id WHERE childpanels.client_id=:client_id ORDER BY childpanels.id DESC");
  $panels->execute(array("client_id" => $user["client_id"]));
  $panels = $panels->fetchAll();
  
@@ -367,7 +367,7 @@ $panel_info = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:panel_id 
 $panel_info->execute(array("panel_id" => 1));
  $panel_info  = $panel_info->fetchAll();
 
- $panels = $conn->prepare("SELECT * FROM panels INNER JOIN clients ON clients.client_id=panels.client_id WHERE panels.client_id=:client_id ORDER BY panels.panel_id DESC");
+ $panels = $conn->prepare("SELECT * FROM childpanels INNER JOIN clients ON clients.client_id=childpanels.client_id WHERE childpanels.client_id=:client_id ORDER BY childpanels.id DESC");
  $panels->execute(array("client_id" => $user["client_id"]));
  $panels = $panels->fetchAll();
 
