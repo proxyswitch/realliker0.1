@@ -14,5 +14,4 @@ $options = [
 ];
 
 $dbh  = new PDO("mysql:dbname=$db;host=$host;port=$port", $user, $pass, $options);
-
 ?>
