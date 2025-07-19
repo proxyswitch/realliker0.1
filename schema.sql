@@ -183,3 +183,16 @@ CREATE TABLE blogs (
     published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+-- Popup notifications shown across the site
+CREATE TABLE notifications_popup (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    description TEXT,
+    action_link VARCHAR(255),
+    action_text VARCHAR(255),
+    expiry_date DATE,
+    isAllUser TINYINT DEFAULT 0,
+    isAllPage TINYINT DEFAULT 0,
+    allPages TEXT,
+    status TINYINT DEFAULT 1
+);
