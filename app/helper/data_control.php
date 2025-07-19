@@ -10,14 +10,12 @@ function getCurrencyUnit(){
 
 function CreateApiKey($data){
     global $conn;
-    $data = md5($data["email"].$data["username"].rand(9999,2324332));
-    $row  = $conn->prepare("SELECT * FROM clients WHERE apikey=:key ");
-    $row-> execute(array("key"=>$data));
-    if( $row->rowCount() ){
-        CreateApiKey();
-    }else{
-        return $data;
-    }
+    do {
+        $token = bin2hex(random_bytes(16));
+        $row  = $conn->prepare("SELECT * FROM clients WHERE apikey=:key");
+        $row->execute(array("key" => $token));
+    } while ($row->rowCount());
+    return $token;
 }
 
 function createPaymentCode(){
