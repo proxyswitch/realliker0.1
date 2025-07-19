@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b87909cba8a939cdb45c144814240b5",
+    "content-hash": "fb4298f82a9528043552cf060dba3510",
     "packages": [
         {
             "name": "brick/math",
@@ -876,29 +876,31 @@
         },
         {
             "name": "kelvinmo/simplejwt",
-            "version": "v0.4.2",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kelvinmo/simplejwt.git",
-                "reference": "65631d18cee47d15a936522c2fdc37d95448236b"
+                "reference": "6a6f600dd4b739b9f3068a651dcdd6d41161af9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/65631d18cee47d15a936522c2fdc37d95448236b",
-                "reference": "65631d18cee47d15a936522c2fdc37d95448236b",
+                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/6a6f600dd4b739b9f3068a651dcdd6d41161af9c",
+                "reference": "6a6f600dd4b739b9f3068a651dcdd6d41161af9c",
                 "shasum": ""
             },
             "require": {
+                "ext-gmp": "*",
                 "ext-hash": "*",
                 "ext-openssl": "*",
-                "php": "^5.4 || ^7.1",
-                "symfony/console": "~2.8 || ^4.0"
+                "php": "^7.1 || ^8.0",
+                "symfony/console": "^4.0 || ^5.0 || ^6.0"
             },
             "require-dev": {
+                "consolidation/robo": "^3.0",
                 "ext-bz2": "*",
                 "ext-phar": "*",
-                "phing/phing": "2.*",
-                "phpunit/phpunit": "4.*"
+                "phpstan/phpstan": "^1.3.0",
+                "phpunit/phpunit": "^7.0 || ^9.3"
             },
             "bin": [
                 "bin/jwkstool"
@@ -919,7 +921,7 @@
                     "email": "kmo@users.sourceforge.net"
                 }
             ],
-            "description": "An simple JSON Web Token library for PHP.",
+            "description": "A simple JSON Web Token library for PHP.",
             "homepage": "https://github.com/kelvinmo/simplejwt",
             "keywords": [
                 "JOSE",
@@ -928,9 +930,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kelvinmo/simplejwt/issues",
-                "source": "https://github.com/kelvinmo/simplejwt/tree/v0.4.2"
+                "source": "https://github.com/kelvinmo/simplejwt/tree/v0.7.1"
             },
-            "time": "2020-09-26T01:00:11+00:00"
+            "time": "2023-08-13T03:56:51+00:00"
         },
         {
             "name": "monolog/monolog",
