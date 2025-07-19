@@ -94,3 +94,39 @@ CREATE TABLE ticket_reply (
 );
 
 -- Additional tables can be created similarly
+
+-- Table for general application settings
+CREATE TABLE settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    site_theme VARCHAR(255)
+);
+
+INSERT INTO settings (id, site_theme) VALUES (1, '0C8t2cUp9wzh2tWfUWiDhRzHlRjKBeyWA7rG');
+
+-- Miscellaneous options used by the panel
+CREATE TABLE General_options (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    currency_format INT DEFAULT 0
+);
+
+INSERT INTO General_options (id, currency_format) VALUES (1, 0);
+
+-- Basic panel information
+CREATE TABLE panel_info (
+    panel_id INT AUTO_INCREMENT PRIMARY KEY,
+    panel_type VARCHAR(255),
+    panel_name VARCHAR(255)
+);
+
+INSERT INTO panel_info (panel_id, panel_type, panel_name) VALUES (1, 'Main', 'SMM Panel');
+
+-- Currency list for exchange rates
+CREATE TABLE currency (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(10),
+    symbol VARCHAR(10),
+    value DECIMAL(20,8),
+    dolar_charge DECIMAL(20,8) DEFAULT 1
+);
+
+INSERT INTO currency (id, code, symbol, value, dolar_charge) VALUES (1, 'USD', '$', 1.0, 1.0);
