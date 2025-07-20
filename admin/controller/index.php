@@ -31,6 +31,29 @@ endif;
 
 
   try {
+    $colCheck = $conn->prepare("SHOW COLUMNS FROM clients LIKE :col");
+    $column = 'client_id';
+    $colCheck->execute(array('col' => $column));
+    if ( ! $colCheck->rowCount() ) {
+      $column = 'id';
+      $colCheck->execute(array('col' => $column));
+      if ( ! $colCheck->rowCount() ) {
+        $column = '';
+      }
+    }
+    if ($column) {
+      $clientsStmt = $conn->prepare("SELECT * FROM clients ORDER BY {$column} DESC LIMIT 500");
+      $clientsStmt->execute();
+    } else {
+      $clientsStmt = $conn->prepare("SELECT * FROM clients LIMIT 500");
+      $clientsStmt->execute();
+    }
+  } catch (PDOException $e) {
+    throw $e;
+  }
+  $clients = $clientsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+  try {
     $clientsStmt = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
     $clientsStmt->execute();
   } catch (PDOException $e) {
@@ -46,6 +69,7 @@ endif;
   $clients = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
   $clients->execute(array());
   $clients = $clients->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 $payment = $conn->prepare("SELECT * FROM payments ORDER BY id DESC LIMIT 5");
