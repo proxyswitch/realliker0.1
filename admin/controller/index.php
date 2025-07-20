@@ -29,9 +29,24 @@ endif;
   $logs->execute(array());
   $logs = $logs->fetchAll(PDO::FETCH_ASSOC);
 
+
+  try {
+    $clientsStmt = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
+    $clientsStmt->execute();
+  } catch (PDOException $e) {
+    if ($e->getCode() == '42S22') {
+      $clientsStmt = $conn->prepare("SELECT * FROM clients ORDER BY id DESC LIMIT 500");
+      $clientsStmt->execute();
+    } else {
+      throw $e;
+    }
+  }
+  $clients = $clientsStmt->fetchAll(PDO::FETCH_ASSOC);
+
   $clients = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
   $clients->execute(array());
   $clients = $clients->fetchAll(PDO::FETCH_ASSOC);
+
 
 $payment = $conn->prepare("SELECT * FROM payments ORDER BY id DESC LIMIT 5");
   $payment->execute(array());
