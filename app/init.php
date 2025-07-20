@@ -93,8 +93,8 @@ if (!is_dir($themePath)) {
   $themePath = __DIR__.'/views/0C8t2cUp9wzh2tWfUWiDhRzHlRjKBeyWA7rG';
 }
 
-$loader   = new Twig_Loader_Filesystem($themePath);
-$twig     = new Twig_Environment($loader, ['autoescape' => false]);
+$loader   = new \Twig\Loader\FilesystemLoader($themePath);
+$twig     = new \Twig\Environment($loader, ['autoescape' => false]);
 
 $user = $conn->prepare("SELECT * FROM clients WHERE client_id=:id");
 $user->execute(array("id"=>$_SESSION["msmbilisim_userid"] ));
