@@ -29,7 +29,7 @@ endif;
   $logs->execute(array());
   $logs = $logs->fetchAll(PDO::FETCH_ASSOC);
 
-  $clients = $conn->prepare("SELECT * FROM clients ORDER BY id DESC LIMIT 500");
+  $clients = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
   $clients->execute(array());
   $clients = $clients->fetchAll(PDO::FETCH_ASSOC);
 
