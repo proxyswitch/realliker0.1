@@ -30,8 +30,7 @@ endif;
   $logs = $logs->fetchAll(PDO::FETCH_ASSOC);
 
 
-  try {
-    $colCheck = $conn->prepare("SHOW COLUMNS FROM clients LIKE :col");
+      $colCheck = $conn->prepare("SHOW COLUMNS FROM clients LIKE :col");
     $column = 'client_id';
     $colCheck->execute(array('col' => $column));
     if ( ! $colCheck->rowCount() ) {
