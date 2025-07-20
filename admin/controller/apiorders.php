@@ -12,7 +12,7 @@ if( $panel["panel_status"] == "frozen" ): include 'app/views/frozen.twig';exit()
 
   if( route(2)  ==  "counter" ):
     $count          = $conn->prepare("SELECT * FROM orders WHERE order_where=:where && dripfeed=:dripfeed && subscriptions_type=:sub $search_add ");
-    $count        ->execute(array("dripfeed"=>1,"sub"=>1,"where"=>api));
+    $count        ->execute(array("dripfeed"=>1,"sub"=>1,"where"=>"api"));
     $count          = $count->rowCount();
     $services = $conn->prepare("SELECT * FROM services");
     $services->execute(array());
@@ -23,7 +23,7 @@ if( $panel["panel_status"] == "frozen" ): include 'app/views/frozen.twig';exit()
           </li>';
       foreach ($services as $service):
         echo '<li'; if( $service["service_id"] == $active ): echo ' class="active"'; endif; echo '>
-                <a '; if( $service["service_type"] == 1 ): echo ' style="color: #c1c1c1;"'; endif; echo ' href="admin/apiorders/all?service_id='.$service["service_id"].'"><span class="label-id">'.$service["service_id"].'</span> '.$service["service_name"].' ('.countRow(["table"=>"orders","where"=>["service_id"=>$service["service_id"],"order_where"=>api]]).')</a>
+                <a '; if( $service["service_type"] == 1 ): echo ' style="color: #c1c1c1;"'; endif; echo ' href="admin/apiorders/all?service_id='.$service["service_id"].'"><span class="label-id">'.$service["service_id"].'</span> '.$service["service_name"].' ('.countRow(["table"=>"orders","where"=>["service_id"=>$service["service_id"],"order_where"=>"api"]]).')</a>
               </li>';
       endforeach;
     exit();
@@ -95,12 +95,12 @@ if( $_GET["search_type"] == "username" && $_GET["search"] ):
       $search_link  = "?dripfeed=".$_GET["subscription"];
     elseif( $status != "all" ):
       $count          = $conn->prepare("SELECT * FROM orders WHERE order_status=:status && order_where=:where && dripfeed=:dripfeed && subscriptions_type=:sub ");
-      $count        ->execute(array("where"=>api,"dripfeed"=>1,"sub"=>1,"status"=>$status));
+      $count        ->execute(array("where"=>"api","dripfeed"=>1,"sub"=>1,"status"=>$status));
       $count          = $count->rowCount();
       $search         = "WHERE orders.order_status='".$status."' && orders.dripfeed='1' && orders.order_where='api' && orders.subscriptions_type='2' ";
     elseif( $status == "all" ):
       $count          = $conn->prepare("SELECT * FROM orders WHERE dripfeed=:dripfeed && order_where=:where && subscriptions_type=:sub ");
-      $count        ->execute(array("dripfeed"=>1,"sub"=>1,"where"=>api));
+      $count        ->execute(array("dripfeed"=>1,"sub"=>1,"where"=>"api"));
       $count          = $count->rowCount();
       $search         = "WHERE orders.dripfeed='1'&& orders.order_where='api' && orders.subscriptions_type='1' ";
     endif;

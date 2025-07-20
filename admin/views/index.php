@@ -246,7 +246,7 @@ border-color:#9921e8;
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Reseller Orders</h6>
-                    <h2 class="text-right" style="padding-bottom:20px;"><img src="https://i.ibb.co/q7q9mZ4/reseller-order.png" style="width:80px;" class="f-left" alt="users"><div><?php echo countRow(["table"=>"orders","where"=>["order_where"=>api] ]) ?></div></h2>
+                    <h2 class="text-right" style="padding-bottom:20px;"><img src="https://i.ibb.co/q7q9mZ4/reseller-order.png" style="width:80px;" class="f-left" alt="users"><div><?php echo countRow(["table"=>"orders","where"=>["order_where"=>"api"] ]) ?></div></h2>
                     
                 </div>
             </div>

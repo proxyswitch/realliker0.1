@@ -249,11 +249,8 @@
               </ul>
             </li>
 
-            <li class="<?php if (route(1) == "referrals") : echo 'active'; endif; ?>"><li class="<?php if (route(1) == "payouts") : echo 'active';
-                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/referrals") ?>"><i class="fas fa-bezier-curve"></i><span> Affiliates</span></a></li>
-                
-
-            </li>
+            <li class="<?php if (route(1) == "referrals") : echo 'active'; endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/referrals") ?>"><i class="fas fa-bezier-curve"></i><span> Affiliates</span></a></li>
+            <li class="<?php if (route(1) == "payouts") : echo 'active'; endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/payouts") ?>"><i class="fas fa-hand-holding-usd"></i><span> Payouts</span></a></li>
      
 
             <li class="" class="dropdown">
