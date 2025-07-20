@@ -29,8 +29,7 @@ endif;
   $logs->execute(array());
   $logs = $logs->fetchAll(PDO::FETCH_ASSOC);
 
-  // Use client_id when ordering clients to avoid referencing a missing id column
-  $clients = $conn->prepare("SELECT * FROM clients ORDER BY client_id DESC LIMIT 500");
+  $clients = $conn->prepare("SELECT * FROM clients ORDER BY id DESC LIMIT 500");
   $clients->execute(array());
   $clients = $clients->fetchAll(PDO::FETCH_ASSOC);
 
