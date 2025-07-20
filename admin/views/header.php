@@ -74,22 +74,8 @@
 
 
 
-    #loading {
-      position: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0.7;
-      background-color: #fff;
-      z-index: 99;
-    }
-
-    #loading-image {
-      z-index: 100;
+    body {
+      padding-top: 70px;
     }
 
     #buy-smm {
@@ -105,17 +91,6 @@
   </style>
 
 </head>
-
-<body>
-
-  <div class="container">
-    <div class="row">
-      <div id="loading">
-        <img id="loading-image" src="/public/ajax-loading.gif" alt="Loading..." />
-      </div>
-    </div>
-  </div>
-
 
 <body class="<?php if($admin["mode"] == "dark"): echo "dark-mode"; endif; ?>">
 
@@ -311,4 +286,3 @@
 
     </div>
   </nav>
-	<br><br><br>
