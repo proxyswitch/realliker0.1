@@ -72,7 +72,7 @@ endif;
 
 
 
-$payment = $conn->prepare("SELECT * FROM payments ORDER BY id DESC LIMIT 5");
+$payment = $conn->prepare("SELECT * FROM payments ORDER BY payment_id DESC LIMIT 5");
   $payment->execute(array());
   $payment = $payment->fetchAll(PDO::FETCH_ASSOC);
 $failCount      = $conn->prepare("SELECT * FROM orders WHERE orders.dripfeed='1' && orders.subscriptions_type='1' && order_error!=:error ");
