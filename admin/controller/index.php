@@ -29,6 +29,7 @@ endif;
   $logs->execute(array());
   $logs = $logs->fetchAll(PDO::FETCH_ASSOC);
 
+  try {
 
       $colCheck = $conn->prepare("SHOW COLUMNS FROM clients LIKE :col");
     $column = 'client_id';
