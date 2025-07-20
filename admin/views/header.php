@@ -303,8 +303,6 @@
         </ul>
 
 
-<li><a href='https://hostwala.in/' data-toggle='https://hostwala.in/' data-target='https://hostwala.in/'><img src='https://i.postimg.cc/MZfh3wgL/e00da03b685a0dd18fb6a08af0923de0-removebg-preview.png' width='100' height='30'></a></li>
-		<li><a href='https://t.me/scriptfixp' data-toggle='https://t.me/scriptfixp' data-target='https://t.me/scriptfixp/'><i class="fas fa-arrow-right"></i> Cotact AbhijeetFix</a></li>
 		
 		
 
